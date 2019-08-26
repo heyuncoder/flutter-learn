@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
+import '../../config/application.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key, this.title = 'test'}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -74,7 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-            Text('泛型数组接收多个组件')
+            Text('泛型数组接收多个组件'),
+            RaisedButton(
+              child: Text('组件页面'),
+              onPressed: (){
+                Application.router.navigateTo(context, '/layouts');
+              },
+              )
           ],
         ),
       ),

@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
-import './views/home/home.dart';
+import 'package:fluro/fluro.dart';
+import './config/router.dart';
+import './config/application.dart';
+import './pages/home/home.dart';
 
-void main() => runApp(MyApp());
+
+void main() {
+  
+  // 注册 fluro routes
+  Router router = Router();
+  Routers.configureRoutes(router);
+  Application.router = router;
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -21,8 +33,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      // routes: ,
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      onGenerateRoute: Application.router.generator,
+      // home: MyHomePage(title: 'Flutter Learn'),
     );
   }
 }
